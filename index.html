@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Glow & Glam Beauty Parlour</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff0f5;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    header {
+      background: #e91e63;
+      color: white;
+      padding: 40px 20px;
+    }
+
+    h1, h2 {
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      background-color: #e91e63;
+      color: white;
+      padding: 15px 25px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background-color: #d81b60;
+    }
+
+    .services, .form-container, .message {
+      display: none;
+      padding: 20px;
+    }
+
+    .form-container, .message {
+      background: white;
+      max-width: 500px;
+      margin: auto;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      margin: 15px 0 5px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      background-color: #e91e63;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #d81b60;
+    }
+
+    .active {
+      display: block;
+    }
+
+    .message h2 {
+      color: #4a148c;
+      text-align: center;
+    }
+
+    .message p {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Glow & Glam Beauty Parlour</h1>
+    <p>Enhance your beauty with our premium services</p>
+  </header>
+
+  <!-- Home Section -->
+  <div id="home" class="services active">
+    <h2>Services Offered:</h2>
+    <ul style="list-style: none; padding: 0;">
+      <li>Haircut - ₹300</li>
+      <li>Facial - ₹800</li>
+      <li>Manicure - ₹500</li>
+      <li>Pedicure - ₹600</li>
+      <li>Hair Spa - ₹1000</li>
+      <li>Bridal Makeup - ₹5000</li>
+    </ul>
+    <button class="btn" onclick="showSection('booking')">Book a Slot</button>
+  </div>
+
+  <!-- Booking Section -->
+  <div id="booking" class="form-container">
+    <h2>Book Your Appointment</h2>
+    <form onsubmit="submitForm(event)">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" required>
+
+      <label for="phone">Contact Number</label>
+      <input type="tel" id="phone" required>
+
+      <label for="service">Service</label>
+      <select id="service" required>
+        <option value="">-- Select Service --</option>
+        <option>Haircut</option>
+        <option>Facial</option>
+        <option>Manicure</option>
+        <option>Pedicure</option>
+        <option>Hair Spa</option>
+        <option>Bridal Makeup</option>
+      </select>
+
+      <label for="date">Preferred Date</label>
+      <input type="date" id="date" required>
+
+      <label for="time">Preferred Time</label>
+      <input type="time" id="time" required>
+
+      <button type="submit">Confirm Booking</button>
+    </form>
+  </div>
+
+  <!-- Confirmation Section -->
+  <div id="confirmation" class="message">
+    <h2>Your slot has been booked!</h2>
+    <p>Thank you for choosing Glow & Glam Beauty Parlour.</p>
+    <p>We look forward to seeing you soon.</p>
+  </div>
+
+  <script>
+    function showSection(sectionId) {
+      document.querySelectorAll('.services, .form-container, .message').forEach(div => {
+        div.classList.remove('active');
+      });
+      document.getElementById(sectionId).classList.add('active');
+    }
+
+    function submitForm(event) {
+      event.preventDefault();
+      // Optionally collect and validate form data here
+      showSection('confirmation');
+    }
+  </script>
+</body>
+</html>
